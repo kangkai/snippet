@@ -1,0 +1,15 @@
+# json escape example
+# 
+# Usage:
+# cat json_excape.txt | grep -v ^# | sed -e 's/^"/\\"/' | sed -e 's/\([^\]\)"/\1\\"/g' | sed -e 's/\([^\]\)"/\1\\"/g' | sed -e 's/\([^\]\)\(\\[^"\\\/bfnrtu]\)/\1\\\2/g'
+#
+# grep removes lines start with '#'
+# first sed escape starting "
+# second sed escape "
+# repeat second sed to handle several connecting " case, e.g.: """
+# fourth sed escape \, but not touching \" \\ \/ \b \f \n \r \t \u
+
+
+this chars must not be changed: \" \\ \/ \b \f \n \r \t \u
+escaped test:
+" \ " = + ' """ \\\\\
